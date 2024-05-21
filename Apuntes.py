@@ -52,3 +52,39 @@ print("\n \n funciones de python que utilizo en mi función \t my_function.__cod
 print("\n \n en qué linea empieza mi función \t my_function.__code__.co_firstlineno:  \t ", my_function.__code__.co_firstlineno)
 print("\n \n my_function.__code__.co_name:  \t ", my_function.__code__.co_name)
 print("\n \n my_function.__code__.co_code:  \t ", my_function.__code__.co_code)
+
+
+# =============================================================================
+#       LIST COMPREHENSION
+# =============================================================================
+
+print(" \n \n  \t   ****************************  \t    LIST COMPREHENSION  \t  ****************************  \n") 
+
+[i for i in range(10)]
+print("creación de una lista: \t ", [i for i in range(10)])
+print("\n \n recorrer una lista y sumar el elemento consigo mismo: \t ", [i + i for i in (1,2,3,4)])
+
+print("\n \n recorrer una lista y añadir condicional \t ", [i for i in (1,2,3,4) if i != 2])
+print("\n \n for dentro de un for, como resultado creamos una tupla : \t ", [(i,j) for i in (1,2,3) for j in (4,5,6)])
+print("\n \n con tres bucles, como resultado creamos una tupla de tres elementos : \t ", [(i,j,k) for i in (1,2,3) for j in (4,5,6) for k in (7,9)])
+
+print("\n \n función con listas comrpimidas \n ")
+def say_hello(i):
+    return (f"hola {str(i)}")
+print([say_hello(i) for i in (1,2,3,4,5)])
+
+
+
+
+
+print("\n \n ------- Tipos de listas comprimidas: \n ")
+print("\n \ttype([i for i in range(4)])")
+print(type([i for i in range(4)]))
+print("\n \t type((i for i in range(4)))")
+print(type((i for i in range(4))))
+print("\n \t type(tuple(i for i in range(4)))")
+print(type(tuple(i for i in range(4))))
+print("\n \t type({i for i in range(4)})")
+print(type({i for i in range(4)}))
+print(" \n \t type({i:i for i in range(4)})")
+print(type({i:i for i in range(4)}))
