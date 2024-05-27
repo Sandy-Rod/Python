@@ -1,5 +1,5 @@
 import dis
-
+import itertools
 # =============================================================================
 #       Listas  
 # =============================================================================
@@ -77,14 +77,112 @@ print([say_hello(i) for i in (1,2,3,4,5)])
 
 
 
-print("\n \n ------- Tipos de listas comprimidas: \n ")
-print("\n \ttype([i for i in range(4)])")
+
+print(" \n \n ------- Tipos de listas comprimidas ------------ \n ")
+
+print(" \n \t type([i for i in range(4)])")
 print(type([i for i in range(4)]))
-print("\n \t type((i for i in range(4)))")
+
+print(" \n \t type((i for i in range(4)))")
 print(type((i for i in range(4))))
-print("\n \t type(tuple(i for i in range(4)))")
+
+print(" \n \t type(tuple(i for i in range(4)))")
 print(type(tuple(i for i in range(4))))
-print("\n \t type({i for i in range(4)})")
+
+print(" \n \t type({i for i in range(4)})")
 print(type({i for i in range(4)}))
+
 print(" \n \t type({i:i for i in range(4)})")
 print(type({i:i for i in range(4)}))
+
+
+
+
+
+# =============================================================================
+#       FUNCIONES CON LISTAS COMPRIMIDAS
+# =============================================================================
+
+print(" \n \n  \t   ****************************  \t    Range, un clásico  \t  ****************************  \n")
+print("range(4)")
+print(range(4))
+
+
+print("\n Hay que pasar una lista para que el generador se ejecute y podamos recuperar sus valores --> \t listrange(4) ")
+print(list(range(4)))
+
+print(" \n \n  \t   ****************************  \t    Map  \t  ****************************  \n")
+print("list(map(lambda x: x/2, (i for i in range(10))))")
+print( list(map(lambda x: x/2, (i for i in range(10)))))
+
+
+print(" \n \n  \t   ****************************  \t    Filter \t  ****************************  \n")
+print("list(filter(lambda x: x%2, (i for i in range(10))))")
+print( list(filter(lambda x: x%2, (i for i in range(10))))) 
+
+
+
+
+print(" \n \n  \t   ****************************  \t    All and Any \t  ****************************  \n")
+print("el resultado es false porque no todos los elementos de la lista son True -->  \t all([True, False, True, True]) ")
+print( all([True, False, True, True]))
+
+print("\n \n el resultado es True porque todos los elementos de la lista son True -->  \t all([True, True, True, True]) ")
+print( all([True, True, True, True]))
+
+print("\n \n el resultado es True porque uno de los elementos de la lista es True -->  \t any([False, True, False, False]) ")
+print( any([False, True, False, False]))
+
+
+print("\n \n el resultado es False porque ningun elemento de la lista es True -->  \t any([False, False, False, False]) ")
+print( any([False, False, False, False]))
+
+
+print(" \n \n  \t   ****************************  \t    Itertools  \t  ****************************  \n")
+print(" podemos acumular suma de elementos de una lista con accumulate -->  \t  list(itertools.accumulate(i for i in range(5))) ")
+print(list(itertools.accumulate(i for i in range(5))))
+
+print("\n \n  hazme el producto de esta lista -ABCD- pudiendo repetir dos elementos, nos devuelve una tupla de dos elementos --> \t  list(itertools.product('ABCD', repeat=2)) ")
+print(list(itertools.product('ABCD', repeat=2)))
+
+
+print("\n \n sobre la funcion interior, iteramos la tupla anterior descriminando los que son iguales  [(p1, p2) for p1, p2 in itertools.product('ABCD', repeat=2) if p1 != p2 ] ")
+print([(p1, p2) for p1, p2 in itertools.product('ABCD', repeat=2) if p1 != p2 ])
+
+
+
+# =============================================================================
+#       GENERADORES, los generadores son funciones que devuelven un iterador, nos permiten crear una lista de manera dinámica
+# =============================================================================
+print(" \n \n  \t   ****************************  \t   Función generador  \t  ****************************  \n")
+def interfunc():
+    for i in range(5):
+        yield i
+
+print("creando una lista llamand una función generador --> \t list(interfunc())")
+print(list(interfunc()))
+
+
+
+# =============================================================================
+#       PROMISES, son coroutines, funciones con estado
+# =============================================================================
+
+
+print(" \n \n  \t   ****************************  \t   Thread  \t  ****************************  \n")
+import time
+
+def countdown(number):
+    while number > 1:
+        number -= 1
+
+if __name__ == "__main__":
+    start = time.time()
+    
+    count = 10000000
+    countdown(count)
+
+    print(f"Tiempo de ejecución: {time.time() - start}")
+
+
+
