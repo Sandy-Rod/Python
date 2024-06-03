@@ -21,6 +21,23 @@ conjuto = {1, 2, 3}
 print(" \n \n  \t   ****************************  \t  MÉTODOS DE SET, el contenido debe ser elementos no repetidos e inmutables, no garantiza la ordenación. \t  ****************************  \n") 
 print(dir(list))
 
+
+# =============================================================================
+#       Slicing, clave : valor
+# =============================================================================
+
+print(" \n \n  \t   ****************************  \t    SLICING  \t  ****************************  \n")
+print("secuencia[inicio:fin:paso]")
+texto = "hola Mundo"
+
+print(texto[:4])    # primeros 4 caracteres
+print(texto[-5:])   # últimos 5 caracteres
+print(texto[1::2])  # posicion impares
+print(texto[::-1])   # posicion impares
+
+
+
+
 # =============================================================================
 #       DICCIONARIO, clave : valor
 # =============================================================================
